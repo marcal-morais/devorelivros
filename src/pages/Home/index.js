@@ -1,3 +1,4 @@
+import VideoFrame from 'assets/Frame17.png';
 import React from 'react';
 
 import Grid from '@material-ui/core/Grid';
@@ -83,7 +84,9 @@ function Home() {
               >
                 Superman - Entre a Foice e o Martelo
               </div>
-              <div style={{ backgroundColor: '#4E4E4E', height: '550px' }} />
+              <div style={{ backgroundColor: '#4E4E4E' }}>
+                <img src={VideoFrame} alt="" style={{ width: '100%' }} />
+              </div>
               <div
                 style={{
                   display: 'flex',

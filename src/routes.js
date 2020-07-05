@@ -1,15 +1,15 @@
 import Container from 'pages/Container';
 import Signin from 'pages/Signin';
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
-function Routes() {
+const Routes = () => {
+  const authUser = localStorage.getItem('access_id');
   return (
     <Switch>
-      <Route path="/" exact component={Container} />
-      <Route path="/login" component={Signin} />
+      <Route path="/" component={authUser ? Container : Signin} />
     </Switch>
   );
-}
+};
 
 export default Routes;

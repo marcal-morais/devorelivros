@@ -1,25 +1,32 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/prop-types */
+import { userSignOut } from 'actions/Auth';
+import Logo from 'assets/Devore.png';
 import Pages from 'pages';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import AppBar from '@material-ui/core/AppBar';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import CollectionsBookmarkIcon from '@material-ui/icons/CollectionsBookmark';
 import HomeIcon from '@material-ui/icons/Home';
-import MenuIcon from '@material-ui/icons/Menu';
 import PersonIcon from '@material-ui/icons/Person';
 import SearchIcon from '@material-ui/icons/Search';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   bottomBar: {
     backgroundColor: '#050505',
     position: 'fixed',
     bottom: 0,
     width: '100%',
+  },
+  logo: {
+    marginRight: theme.spacing(2),
+    flexGrow: 1,
   },
   appBar: {
     backgroundColor: '#6FBF8B',
@@ -32,17 +39,24 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
   },
-});
+}));
 function Container() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  function signout() {
+    dispatch(userSignOut());
+  }
   return (
     <div className={classes.container}>
       <AppBar position="static" className={classes.appBar}>
         <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6">Devore</Typography>
+          <div className={classes.logo}>
+            <img src={Logo} alt="Logo Devore" />
+          </div>
+
+          <Button color="inherit" onClick={() => signout()}>
+            Logout
+          </Button>
         </Toolbar>
       </AppBar>
 
